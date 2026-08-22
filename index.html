@@ -399,7 +399,7 @@
     </div>
 
     <button class="btn btn-primary" id="startBtn" disabled>Start Game</button>
-    <p class="hint">5 quick rounds · ~1 minute</p>
+    <p class="hint">5 quick rounds · ~3 minute</p>
   </div>
 
   <!-- ========== GAME ========== -->
@@ -656,13 +656,13 @@
 
     function startTimer() {
       clearInterval(state.timer);
-      const total = 48;
+      const total = 35;
       state.timeLeft = total;
       state.timer = setInterval(() => {
         state.timeLeft -= 0.1;
         const pct = Math.max(0, (state.timeLeft / total) * 100);
         $('timerFill').style.width = pct + '%';
-        if (state.timeLeft <= 12) $('timerFill').classList.add('urgent');
+        if (state.timeLeft <= 9) $('timerFill').classList.add('urgent');
         if (state.timeLeft <= 0) {
           clearInterval(state.timer);
           if (!state.answered) timeUp();
